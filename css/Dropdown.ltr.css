@@ -1,0 +1,90 @@
+.dropdown,
+.dropdown ul,
+.dropdown li{
+  margin  : 0;
+  padding : 0;
+  background-color: #c9e9e9;
+  border: 1px solid #c1e1e1;
+}
+
+.dropdown ul{
+  display  : none;
+  position : absolute;
+  top      : 100%;
+  left     : 0;
+  z-index  : 1;
+}
+
+.dropdown ul ul{
+  top  : 0;
+  left : 100%;
+}
+
+.dropdown ul .dropdownRightToLeft ul{
+  left  : auto;
+  right : 100%;
+}
+
+.dropdown li{
+  position        : relative;
+  display         : block;
+  list-style-type : none;
+/*from span below*/
+  text-decoration : none;
+  padding    : 0.25em 0.5em;
+  white-space     : normal;
+  transition : background 0.2s;
+}
+
+.dropdown > li{
+  display : inline-block;
+}
+
+/*.dropdown a,
+.dropdown span{
+  display         : block;
+  text-decoration : none;
+  white-space     : pre;
+  padding    : 0.25em 0.5em;
+/*  color      : white;*/
+/*  transition : background 0.2s;
+}*/
+
+.dropdown li:hover > ul{
+  display : block;
+}
+
+/* set the background colour of active items */
+.dropdown li:hover /*> a,
+.dropdown li:hover > span*/,
+.dropdown li.dropdownOpen /*> a,
+.dropdown li.dropdownOpen > span*/{
+  background : rgb(160,208,112);
+}
+
+.dropdown .selected{
+  background-color: rgb(200,248,152);
+  border: 2px solid #597979;
+  color: #396969;
+}
+
+.dropdownVertical{
+  display : inline-block;
+}
+
+.dropdownVertical > li{
+  display : block;
+}
+
+.dropdownVertical ul{
+  top  : 0;
+  left : 100%;
+}
+
+.dropdownJavaScript li:hover > ul{
+  display : none;
+}
+
+.dropdownJavaScript li.dropdownOpen > ul{
+  display : block;
+}

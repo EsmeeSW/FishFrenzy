@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+       <meta charset="utf-8" />
+ <!--       <meta http-equiv="Content-Security-Policy" content="default-src 'unsafe-inline' 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+ -->       <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/Dropdown.ltr.css" />
+		<script src="../../../jquery.js"></script>
+		<script src="https://code.jquery.com/jquery.js"></script> <!-- -->
+        <title>Fishing Frenzy</title>
+    </head>
+    <body>
+<!--      <div class="app">
+            <h1>Apache Cordova</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+<!-- -->
+
+        <script type="text/javascript" src="cordova.js"></script> 
+        <script type="text/javascript" src="js/Dropdown.src.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+ 			<ul id="btnMainMenu" class="dropdown">
+				<li style="font-size:24px" > ≡ <br>
+				<ul> <!-- id="menuDropdown" class="dropdown-content mMenu">
+					<div class="dd-items">-->
+					<li>Bait <!-- <img height="24px" width="24px" src="img/hook.png"> -->
+						<ul>
+						<li id="hook" class="bait selected">Hook</li>
+						<li id="worm" class="bait">Worm</li>
+						<li id="donut" class="bait">Donut</li>
+						</ul>
+					</li>
+					<li>Weight
+						<ul>
+						<li id="weight-heavy" class="weight">Heavy</li>
+						<li id="weight-med" class="weight selected">Med</li>
+						<li id="weight-light" class="weight">Light</li>
+						</ul>
+					</li>
+					<li>Width
+						<ul>
+						<li id="field-width-narrow" class="field-width">Narrow</li>
+						<li id="field-width-med" class="field-width selected">Med</li>
+						<li id="field-width-wide" class="field-width">Wide</li>
+						<li id="field-width-auto" class="field-width" >Auto</li>
+						<li id="field-width-custom" class="field-width" >Custom</li>
+						</ul>
+					</li>
+					<li id="reset" class="mMenu">Reset</li>
+					<li>Help
+						<ul id="help">
+						Click on fisherman to 'cast'.<br>
+						Select bait for better chances at catching certain fish.<br>  
+						Avoid tire & boot or your points are reset to 0.<br>
+						Hook weight changes speed:  Heavy is fast to drop and slow to reel up.  Light is slow to drop but fast to reel up.  
+						</ul>
+					</li>
+					<li>About
+						<ul>
+						by: QiXi <br> ver: 01.16.294
+						</ul>
+					</li>
+					<!--</div>-->
+				</ul>
+				</li>
+			</ul>
+<!--			<div class="textcentered"> &nbsp
+			<!--<small> <button id="reset">RESET</button> </small> &nbsp &nbsp &nbsp &nbsp -->
+			<!--<span class="Title"><span id="reset">≡</span>  &nbsp &nbsp &nbsp &nbsp -->
+			&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+			<span id="Title">Fishing Frenzy</span>   
+			&nbsp &nbsp &nbsp &nbsp 
+			<span id="Score"> Score: <span style="background-color: #ccdcdc;" id="pointBox"> 0 </span></span>
+<!--		<div class="textcentered" id="message">Click the [Cast] Button to try and catch a fish!  If the hook is near its mouth, it might bite.</div>-->
+		<div id="message">Cast your line when you're ready</div> 
+<!--		<div class="textcentered">
+		<span>Bait: <Input type="radio" name="bait" value=1 onclick="changeBait(1)" checked>Hook  
+			<Input type="radio" name="bait" value=1 onclick="changeBait(2)">Worm 
+			<Input type="radio" name="bait" value=1 onclick="changeBait(3)">Donut 
+		</span> &nbsp &nbsp &nbsp
+		<span><button id="leftButton"><--</button><button id="startButton">Cast</button><button id="rightButton">--></button>
+<!--		</span> &nbsp &nbsp &nbsp &nbsp 
+		<span>Hook weight: <Input type="radio" name="hookWeight" value=1 onclick="changeWeight(1)">L  
+			<Input type="radio" name="hookWeight" value=1 onclick="changeWeight(2)" checked>M 
+			<Input type="radio" name="hoohttp://www.wizard101central.com/forums/showthread.php?474848-2016-Halloween-Word-Search-Contest-DISCUSSION-THREAD&goto=newpostkWeight" value=1 onclick="changeWeight(3)">H 
+		</span> &nbsp &nbsp  &nbsp &nbsp 
+		</div><div class="textcentered">
+		<span><button id="pause">pause</button>
+		</span>
+		</div>
+-->
+<br>
+		<div id="Field" class="centered">
+			<!--<button id="leftBoatButton" class="btn"><</button>-->
+			<img id="leftBoatButton" src="img/arrow.png"> 
+			<img id="rightBoatButton" src="img/arrow.png"> 
+			<div id="fishingBoat" >
+				<!--<button id="leftBoatButton" class="boat btn" onclick="boatLeft()"><-</button>-->
+				<img id="fishingHook" mouthX=30 mouthY=50 class="boat" hookType=1 src="img/hook.png">
+				<img id="fishingLine" class="boat" src="img/line.png">
+				<img id="fishingPlayer" class="boat" src="img/fisherdoodle.png"">
+				<!--<button id="rightBoatButton" class="boat btn" onclick="boatRight()">-></button>-->
+			</div>
+			
+			<!--<button id="rightBoatButton" class="btn">></button>-->
+			<div id="bubbles">
+			</div> <!-- -->
+			<div id="DoodleFish"  fishIndex=1 mouthX=-17 mouthY=5 mouthSize=10 junk=1 class="fish" style="top:10px; width:69px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="FurBallFish"  fishIndex=2 mouthX=0 mouthY=0 mouthSize=5 junk=1 class="fish" style="top:20px; width:46px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="LegendsFish"  fishIndex=3 mouthX=-5 mouthY=0 mouthSize=5 junk=1 class="fish" style="top:30px; width:52px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="BoneFish"  	fishIndex=4 mouthX=-40 mouthY=10 mouthSize=10 junk=1 class="fish" style="top:40px; width:93px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="FishSandwich"  fishIndex=5 mouthX=-23 mouthY=5 mouthSize=10 junk=1 class="fish" style="top:50px; width:58px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="ToddFish"  	fishIndex=6 mouthX=-40 mouthY=15 mouthSize=10 junk=1 class="fish" style="top:60px; width:104px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="DragonFish"  fishIndex=7 mouthX=-27 mouthY=5 mouthSize=10  junk=1 class="fish" style="top:70px; width:108px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="ChameleonFish" fishIndex=8 mouthX=-25 mouthY=10 mouthSize=10 junk=1 class="fish" style="top:80px; width:70px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="BoarFish" 		fishIndex=9 mouthX=-18 mouthY=5 mouthSize=5 junk=1 class="fish" style="top:90px; width:70px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="ArcherFish" 	fishIndex=10 mouthX=-27 mouthY=5 mouthSize=5 junk=1 class="fish" style="top:80px; width:60px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="BearacudaFish" fishIndex=11 mouthX=-30 mouthY=5 mouthSize=5 junk=1 class="fish" style="top:90px; width:70px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="Tire" 				fishIndex=12 mouthX=0 mouthY=0 mouthSize=20 junk=0 class="fish" style="top:80px; width:44px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="Boot" 				fishIndex=13 mouthX=-12 mouthY=12 mouthSize=15 junk=0 class="fish" style="top:90px; width:64px" ></div><!-- src="img/blank.gif"><!-- -->
+			<div id="Pace" 				class="pacefish" style="top:-900px" ></div><!-- ssrc="img/blank.gif"><!-- -->
+			<!-- <img id="Decore1" src="img/seaDecor.png"><!-- -->
+			<!-- <img id="Decore2" src="img/seaDecor.png"><!-- -->
+			<!-- <form name="FishingForm" id="FishingForm" method="POST" action="" target="background_page">
+				<input type="hidden" id="FishPace" name="FishPace" value="0.00000">
+				<input type="hidden" id="FishLoc" name="FishLoc" value="0.00000">
+				<input type="hidden" id="FishOpt" name="FishOpt" value="MH">
+				<input type="hidden" id="Submit" name="Submit" value="EditRecord">
+			</form><!-- -->
+		</div>
+    </body>
+</html>

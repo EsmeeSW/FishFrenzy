@@ -1,0 +1,404 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+/* {
+/*    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+/*}
+/*
+/*body {
+/*    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+/*    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+/*    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+/*    background-color:#E4E4E4;
+/*    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+/*    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+/*    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+/*    background-image:-webkit-gradient(
+/*        linear,
+/*        left top,
+/*        left bottom,
+/*        color-stop(0, #A7A7A7),
+/*        color-stop(0.51, #E4E4E4)
+/*    );
+/*    background-attachment:fixed;
+/*
+/*    font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
+/*    font-size:12px;
+/*    height:100%;
+/*    margin:0px;
+/*    padding:0px;
+/*    text-transform:uppercase;
+/*    width:100%;
+/*}
+/*
+/* Portrait layout (default) */
+.app {
+/*    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:50%;
+    top:50%;
+    height:50px;                   /* text area height */
+    width:225px;                   /* text area width */
+    text-align:center;
+    padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+        background-position:left center;
+        padding:75px 0px 75px 170px;  /* padding-top + padding-bottom + text area = image height */
+        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+h1 {
+    font-size:24px;
+    font-weight:normal;
+    margin:0px;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+ 
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+/* Dropdown Button */
+/*.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+*/
+/* Dropdown button on hover & focus */
+/*.dropbtn:hover, .dropbtn:focus {
+    background-color: #3e8e41;
+}
+*/
+/* The container <div> - needed to position the dropdown content */
+/*.dropdown {
+*/
+#btnMainMenu{
+	position: relative;
+	float: left;
+}
+	/*
+	z-index: 99;
+    display: inline-block;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.dropdown span:hover {background-color: #f1f1f1}
+*/
+/* Dropdown Content (Hidden by Default) */
+/*.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+*/
+/* Links inside the dropdown */
+/*.dropdown-content span {
+    color: black;
+    padding: 6px 8px;
+    text-decoration: none;
+    display: block;
+}
+*/
+/* Change color of dropdown links on hover */
+/*.dropdown-content span:hover {background-color: #f1f1f1}
+*/
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+/* .show {display:block;}
+*/ 
+.blink {
+    animation:fade 3000ms infinite;
+    -webkit-animation:fade 3000ms infinite;
+}
+#help{
+	width: 200px;
+}
+
+#Title{
+	position: absolute;
+	font-size:35px;
+	left: 0px;
+	top: 0px;
+	width: 500px;
+	text-align:center;
+	z-index:-1;
+}
+#message{
+	position:absolute;
+	left:0px;
+	width:500px;
+	text-align:center;
+	top:40px;
+	z-index:-1;
+}
+#Score{
+	position: absolute;
+	font-size:24px;
+	font-weight: bold;
+	left: 400px;
+	top: 7px;
+}
+
+#pointBox{
+	padding: 0px 6px;
+}
+
+#Field{
+	position: absolute; /* all child element positions will be relative to the "Field" */
+	left: 10px; /*1%;*/
+	top: 60px;/**/
+	height: 500px; /*75%; /*600px;/**/
+	width: 500px; /*95%; /*800px;*/
+	border: 2px solid black;
+	background-color: #00abd1;/**/
+	background-image: url(../img/seaDecor.png), url(../img/seaDecor.png), url(../img/water-bottom.png), url(../img/water-top.gif); 
+	background-repeat: no-repeat, no-repeat, repeat-x, repeat-x;
+	background-position: bottom left, bottom right, bottom, top;
+	z-index: -1;
+	overflow: hidden;
+	/*        background-size: 100% 100%; /*repeat-x;/**/
+}
+/*#Decore1{
+	position:relative;
+	left:0px;
+	top:400px;
+	z-index:-1;
+}
+#Decore2{
+	position:relative;
+	float:right;
+	top:400px;
+	z-index:-1;
+}*/
+div.centered{
+margin:0 auto; /* vertical margin at 0px (very top) and horizontal margin is automatic */
+}
+
+.textcentered{
+text-align:center; /* text (and other inline elements) centered in div */
+}
+.textleft{
+text-align:left; /* text (and other inline elements) centered in div */
+}
+span.textright{
+text-align:right; /* text (and other inline elements) centered in div */
+}
+
+.boat {
+position:absolute;
+left:50%; /*350px;/**/
+top: 15px; /*3%;*/
+margin: 0px 0px 0px 0px;
+}
+.btn{
+	position:absolute;
+	top:25px; /*5%;*/
+	height:25px;
+	width:25px;
+	font-size:24px;
+    background-color:#c9e9e9;
+	border:1px solid #c1e1e1;
+	z-index=-1;
+}
+
+#leftBoatButton{
+	position:absolute;
+	top:5px; /*5%;*/
+    -ms-transform: scaleX(-1); /* IE 9 */
+    -webkit-transform: scaleX(-1); /* Chrome, Safari, Opera */
+    transform: scaleX(-1);
+	left:0px;
+}
+/*#leftBoatButton {
+z-index: 9;
+border-radius: 25px 0px 0px 25px;
+}
+#rightBoatButton {
+left: 50% + 60px;
+margin-left: 75px;
+z-index: 9;
+border-radius: 0px 10px 10px 0px;
+}*/
+#rightBoatButton{
+	position:absolute;
+	top:5px; /*5%;*/
+	left:425px;
+}
+
+#fishingPlayer{
+width:100px;
+height:50px;
+z-index: 0;
+}
+#fishingHook {
+width:50px;
+height:50px;
+margin-top: 25px; 
+z-index: 0;
+}	
+#fishingLine {
+/*top:2%; 25px;*/
+width:1px;
+height:25px;
+margin: 25px 0px 0px 33px; /*top, right, bottom, left*/
+z-index: 0;
+}
+
+
+.pacefish{
+position:absolute; /* image positioned absolutely in parent */
+top:-100px; /*Math.random()*1000; /*0px; /* default to very top */
+left:0px; /* default to far left */
+/*				width:50px; */
+height:50px;
+/*				cursor:pointer; /* make cursor change to pointer finger when over tagplayer images */
+}
+
+.bubble{
+position:absolute; /* image positioned absolutely in parent */
+}
+
+.fish{
+position:absolute; /* image positioned absolutely in parent */
+top:50%; /*Math.random()*1000; /*0px; /* default to very top */
+left:0px; /* default to far left */
+/*				width:50px; */
+height:50px;
+/*				cursor:pointer; /* make cursor change to pointer finger when over tagplayer images */
+background-image: url('../img/fishes.png');
+}
+
+#DoodleFish.swimRight{
+	background-position: 0 -50px;
+}
+#DoodleFish.swimLeft{
+	background-position: 0 0px;
+}
+#FurBallFish.swimRight{
+	background-position: -69px -50px;
+}
+#FurBallFish.swimLeft{
+	background-position: -69px 0px;
+}
+#LegendsFish.swimRight{
+	background-position: -115px -50px;
+}
+#LegendsFish.swimLeft{
+	background-position: -115px 0px;
+}
+#BoneFish.swimRight{
+	background-position: -167px -50px;
+}
+#BoneFish.swimLeft{
+	background-position: -167px 0px;
+}
+#FishSandwich.swimRight{
+	background-position: -260px -50px;
+}
+#FishSandwich.swimLeft{
+	background-position: -260px 0px;
+}
+#ToddFish.swimRight{
+	background-position: -318px -50px;
+}
+#ToddFish.swimLeft{
+	background-position: -318px 0px;
+}
+#DragonFish.swimRight{
+	background-position: -422px -50px;
+}
+#DragonFish.swimLeft{
+	background-position: -422px 0px;
+}
+#ChameleonFish.swimRight{
+	background-position: -530px -50px;
+}
+#ChameleonFish.swimLeft{
+	background-position: -530px 0px;
+}
+#BoarFish.swimRight{
+	background-position: -600px -50px;
+}
+#BoarFish.swimLeft{
+	background-position: -600px 0px;
+}
+#ArcherFish.swimRight{
+	background-position: -670px -50px;
+}
+#ArcherFish.swimLeft{
+	background-position: -670px 0px;
+}
+#BearacudaFish.swimRight{
+	background-position: -730px -50px;
+}
+#BearacudaFish.swimLeft{
+	background-position: -730px 0px;
+}
+#Tire.swimRight{
+	background-position: -800px -50px;
+}
+#Tire.swimLeft{
+	background-position: -800px 0px;
+}
+#Boot.swimRight{
+	background-position: -844px -50px;
+}
+#Boot.swimLeft{
+	background-position: -844px 0px;
+}
